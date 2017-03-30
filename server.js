@@ -9,10 +9,15 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const app = express();
+const path = require('path');
 const port = process.env.PORT || 8000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+
+const apiTest = require('./serverAPI/api-video-test');
+const apiVideoFrame = require('./serverAPI/api-videoFrame-test');
+
 
 app.disable('x-powered-by');
 app.use(express.static('public'));
@@ -32,25 +37,10 @@ switch (app.get('env')) {
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const path = require('path');
-
 app.use(express.static(path.join('public')));
 
-// // CSRF protection
-// app.use((req, res, next) => {
-//   if (/json/.test(req.get('Accept'))) {
-//     return next();
-//   }
-//
-//   res.sendStatus(406);
-// });
-
-const apiTest = require('./serverAPI/api-video-test');
-
 app.use('/api-video-test', apiTest );
-
-//routes
-
+app.use('/api-videoFrame-test', apiVideoFrame);
 
 app.use('/assets', express.static('app/assets'));
 
@@ -78,6 +68,15 @@ app.use((err, _req, res, _next) => {
   console.error(err.stack);
   res.sendStatus(500);
 });
+
+// // CSRF protection
+// app.use((req, res, next) => {
+//   if (/json/.test(req.get('Accept'))) {
+//     return next();
+//   }
+//
+//   res.sendStatus(406);
+// });
 
 app.listen(port, () => {
   if (app.get('env') !== 'test') {
