@@ -1,11 +1,35 @@
-
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
-import React from 'react';
+import VideoPlayer from './VideoPlayer';
 
-const VideoTest = () => {
-  return (
-    <h1>VideoTest</h1>
-  )
+
+class VideoTest extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      // video: VideoFrame
+    };
+  }
+
+  componentDidMount() {
+    axios.get('/api-videoFrame-test')
+      .then(res => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  render() {
+    return (
+      <div>
+        <VideoPlayer/>
+      </div>
+    )
+  }
 };
 
 export default VideoTest;
