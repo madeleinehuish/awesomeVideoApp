@@ -5,23 +5,17 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // var cors = require('cors')
-
-const express = require('express');
-// const passport = require('passport');
-const app = express();
-
 // app.use(cors());
 
-app.disable('x-powered-by');
-
-// app.use(passport.initialize());
-app.use(express.static('public'));
-
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 8000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 
-// const _ = require('lodash');
+app.disable('x-powered-by');
+app.use(express.static('public'));
 
 switch (app.get('env')) {
   case 'development':
@@ -51,25 +45,18 @@ app.use(express.static(path.join('public')));
 //   res.sendStatus(406);
 // });
 
-// const oauth = require('./routes/api-oauth');
-// const snippets = require('./routes/api-snippets')
-// const users = require('./routes/api-users');
-// const token = require('./routes/api-token');
-//
-// app.use('/api-oauth', oauth);
-// app.use(snippets);
-// app.use(users);
-// app.use(token);
+const apiTest = require('./serverAPI/api-video-test');
+
+app.use('/api-video-test', apiTest );
+
+//routes
+
 
 app.use('/assets', express.static('app/assets'));
 
 app.use((_req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-
-// app.use((_req, res) => {
-//   res.sendStatus(404);
-// });
 
 // eslint-disable-next-line max-params
 app.use((err, _req, res, _next) => {
@@ -91,8 +78,6 @@ app.use((err, _req, res, _next) => {
   console.error(err.stack);
   res.sendStatus(500);
 });
-
-const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
   if (app.get('env') !== 'test') {
