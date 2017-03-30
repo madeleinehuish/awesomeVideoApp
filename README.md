@@ -1,8 +1,10 @@
-# with-react
+# Awesome Video App
 
-Ryan Sobol's React skeleton for Brunch
+Madeleine Huish and Carolyn Kunz
 
-## Dependencies
+A lightning project in React.js and Node.js to explore video image processing.
+
+<!-- ## Dependencies
 
 Install the [Brunch](http://brunch.io) package globally with NPM.
 
@@ -79,4 +81,4 @@ open http://localhost:8000/
 ## Resources
 
 - [Brunch](http://brunch.io)
-- [React](https://facebook.github.io/react/)
+- [React](https://facebook.github.io/react/) -->
