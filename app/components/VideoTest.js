@@ -1,22 +1,11 @@
-// import React from 'react';
-// import axios from 'axios';
-// import VideoListItem from './video_list_item';
-//
-// const VideoPlayer = (props) => {
-// 	const videoItems = props.videos.map((video) => {
-// 		return (
-// 	 		<VideoListItem
-// 				onVideoSelect={props.onVideoSelect}
-// 				key={video.etag}
-// 				video={video} />
-// 		);
-// 	});
-//
-// 	return (
-// 		<ul className="col-md-4 list-group">
-// 			{videoItems}
-// 		</ul>
-// 	);
-// }
-//
-// export default VideoList;
+
+import axios from 'axios';
+import React from 'react';
+
+const VideoTest = () => {
+  return (
+    <h1>VideoTest</h1>
+  )
+};
+
+export default VideoTest;
