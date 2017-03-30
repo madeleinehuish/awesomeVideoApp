@@ -1,8 +1,17 @@
 import React from 'react';
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
 
 const App = React.createClass({
   render() {
-    return <h1>Hello world</h1>;
+    return (
+      <div>
+        <Header/>
+        <Main/>
+        <Footer/>
+      </div>
+    );
   }
 });
 
