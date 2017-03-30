@@ -3,17 +3,21 @@
 const express = require('express');
 const router = express.Router();
 const ffmpeg = require('ffmpeg');
-const ffmpegFluent = require('fluent-ffmpeg');
+
+//this works
+// const ffmpegFluent = require('fluent-ffmpeg');
+
+
 // const command = ffmpeg();
 // const mp4 = require('mp4');
 // const destinationFolder = './Output';
 
 
-
-const video = ffmpegFluent()
-  .addInput('./Videos/video1.mp4');
-
-console.log(video._outputs);
+//this works
+// const video = ffmpegFluent()
+//   .addInput('./Videos/video1.mp4');
+//
+// console.log(video._outputs);
 
 //this is from ffmpeg and is not working
 // const vid = new ffmpeg('./Videos/video1.mp4');
