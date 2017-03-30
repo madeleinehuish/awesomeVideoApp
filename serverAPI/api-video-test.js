@@ -10,41 +10,16 @@ const app = new Clarifai.App(
   '5CY6ghxF2d_cuVVMV_weo_C_vLGN_7nY1KVXOkjF'
 );
 
+const image1 = 'https://samples.clarifai.com/metro-north.jpg';
+const image2 = 'http://travelchannel.sndimg.com/content/dam/images/travel/fullset/2014/12/3/top-10-caribbean-beaches-eagle-beach-aruba.jpg.rend.tccom.1280.960.jpeg';
 // predict the contents of an image by passing in a url
-app.models.predict(Clarifai.GENERAL_MODEL, 'https://samples.clarifai.com/metro-north.jpg')
-  .then(
-    function(response) {
-      console.log(response);
-    },
-    function(err) {
-      console.error(err);
-    }
-);
-
-// search for concepts
-function searchImage(response) {
-  app.inputs.search({
-    concept: {
-      name: 'beach'
-    }
-  }).then(
-    function(response) {
-      console.log(response);
-    },
-    function(response) {
-      console.error(response);
-    }
-  );
-}
-
-// add some inputs
-app.inputs.create('http://travelchannel.sndimg.com/content/dam/images/travel/fullset/2014/12/3/top-10-caribbean-beaches-eagle-beach-aruba.jpg.rend.tccom.1280.960.jpeg').then(
-  searchImage,
+app.models.predict(Clarifai.GENERAL_MODEL, [image1, image2]).then(
+  function(response) {
+    console.log(response.outputs[0].data, response.outputs[1].data);
+  },
   function(err) {
     console.error(err);
   }
 );
-
-
 
 module.exports = router;
