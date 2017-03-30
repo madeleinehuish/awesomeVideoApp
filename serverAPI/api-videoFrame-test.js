@@ -4,6 +4,15 @@ const express = require('express');
 const router = express.Router();
 const ffmpeg = require('ffmpeg');
 
+const exec = require('child_process').exec;
+const cmd = `ffmpeg -i ~/Projects/videoApp/serverAPI/video1.avi -vf fps=1 ~/Projects/videoApp/serverAPI/Output/outpu%d.png`;
+
+exec(cmd, function(error, stdout, stderr) {
+  // command output is in stdout
+	console.log(stdout);
+	console.log(stderr);
+});
+
 //this works
 // const ffmpegFluent = require('fluent-ffmpeg');
 
@@ -25,13 +34,16 @@ const ffmpeg = require('ffmpeg');
 
 // try {
 // 	new ffmpeg('./Videos/video1.mp4', function (err, vid) {
+// 		console.log('got into function');
 // 		if (!err) {
 // 			console.log('The video is ready to be processed');
+//
 // 		} else {
 // 			console.log('Error: ' + err);
 // 		}
 // 	});
 // } catch (e) {
+// 	console.log('got into error part');
 // 	console.log(e.code);
 // 	console.log(e.msg);
 // }
