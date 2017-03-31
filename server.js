@@ -15,8 +15,9 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 
+
 const apiTest = require('./serverAPI/api-video-test');
-const apiVideoFrame = require('./serverAPI/api-videoFrame-test');
+const apiVideoFrameTest = require('./serverAPI/api-videoFrame-test');
 
 
 app.disable('x-powered-by');
@@ -40,7 +41,7 @@ app.use(cookieParser());
 app.use(express.static(path.join('public')));
 
 app.use('/api-video-test', apiTest );
-app.use('/api-videoFrame-test', apiVideoFrame);
+app.use(apiVideoFrameTest);
 
 app.use('/assets', express.static('app/assets'));
 

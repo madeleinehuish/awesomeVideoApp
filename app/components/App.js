@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import VideoTest from './VideoTest';
+// import VideoTest from './VideoTest';
 
 
 class App extends Component {
@@ -19,7 +19,6 @@ class App extends Component {
       <div>
         <Header/>
         <Main/>
-				<VideoTest/>
         <Footer/>
       </div>
     );
