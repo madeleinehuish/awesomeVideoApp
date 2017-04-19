@@ -10,9 +10,11 @@
   },
   "scripts": {
     "deploy": "rm -rf public; brunch build --production; surge public",
+    "knex": "./node_modules/.bin/knex",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public",
-    "start": "brunch watch --server",
-    "nodemon": "nodemon server.js"
+    "nodemon": "nodemon server.js",
+    "start": "brunch watch --server"
+
   },
   "dependencies": {
     "axios": "^0.15.0",
@@ -31,7 +33,7 @@
     "humps": "^2.0.0",
     "include-media": "^1.4.9",
     "joi": "^10.2.2",
-    "knex": "^0.12.8",
+    "knex": "^0.12.9",
     "lazy-route": "^1.0.7",
     "mobx": "^2.5.2",
     "mobx-react": "^3.5.7",

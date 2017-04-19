@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import VideoTest from './VideoTest';
 
-const Main = () => {
+const Main = (props) => {
   return (
     <div style={styles.main}>
       <div className="container">
@@ -10,7 +10,11 @@ const Main = () => {
           {/* <div className="videoScreen col-sm-6" style={styles.videoScreen}>
             <p style={styles.videoScreenText}>Upload your video here</p>
           </div> */}
-          <VideoTest />
+          {/* {props.videos.name} */}
+          <VideoTest
+            videoCurrent={props.videoCurrent}
+            onInputChange={props.onInputChange}
+          />
           <SearchBar />
         </div>
       </div>

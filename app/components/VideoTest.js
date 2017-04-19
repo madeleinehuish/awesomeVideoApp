@@ -4,32 +4,16 @@ import axios from 'axios';
 import VideoPlayer from './VideoPlayer';
 
 
-class VideoTest extends Component {
-  constructor(props) {
-    super(props);
+const VideoTest= (props) => {
 
-    this.state = {
-      // video: VideoFrame
-    };
-  }
-
-  componentDidMount() {
-    axios.get('/api-videoFrame-test')
-      .then(res => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
-
-  render() {
     return (
       <div>
-        <VideoPlayer/>
+        <VideoPlayer
+          videoCurrent={props.videoCurrent}
+          onInputChange={props.onInputChange}
+        />
       </div>
     )
-  }
-};
+  };
 
 export default VideoTest;

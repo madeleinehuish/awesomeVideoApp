@@ -17,6 +17,7 @@ const morgan = require('morgan');
 
 
 const apiTest = require('./serverAPI/api-video-test');
+const apiGetVideo = require('./serverAPI/api-getVideoFromFile');
 const apiVideoFrameTest = require('./serverAPI/api-videoFrame-test');
 
 
@@ -41,6 +42,7 @@ app.use(cookieParser());
 app.use(express.static(path.join('public')));
 
 app.use('/api-video-test', apiTest );
+app.use('/api-getVideoFromFile', apiGetVideo);
 app.use(apiVideoFrameTest);
 
 app.use('/assets', express.static('app/assets'));
