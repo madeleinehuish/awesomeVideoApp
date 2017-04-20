@@ -4,9 +4,6 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
-// var cors = require('cors')
-// app.use(cors());
-
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -14,6 +11,11 @@ const port = process.env.PORT || 8000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+
+const apiGetVideoFromAWS = require('./serverAPI/api-AWS');
+const apiGetVideoFromFile = require('./serverAPI/api-getVideoFromFile');
+const apiVideoFrameTest = require('./serverAPI/api-videoFrame-test');
+const apiTest = require('./serverAPI/api-video-test');
 
 app.disable('x-powered-by');
 app.use(express.static('public'));
@@ -34,17 +36,10 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join('public')));
 
-
-console.log('in server, before app.use');
-const apiGetVideoFromFile = require('./serverAPI/api-getVideoFromFile');
-const apiVideoFrameTest = require('./serverAPI/api-videoFrame-test');
-const apiTest = require('./serverAPI/api-video-test');
+app.use(apiGetVideoFromAWS);
 app.use(apiGetVideoFromFile);
 app.use(apiVideoFrameTest);
 app.use(apiTest);
-
-// app.use(apiVideoFrameTest);
-console.log('in server, after app.use');
 
 app.use('/assets', express.static('app/assets'));
 
@@ -73,15 +68,6 @@ app.use((err, _req, res, _next) => {
   res.sendStatus(500);
 });
 
-// // CSRF protection
-// app.use((req, res, next) => {
-//   if (/json/.test(req.get('Accept'))) {
-//     return next();
-//   }
-//
-//   res.sendStatus(406);
-// });
-
 app.listen(port, () => {
   if (app.get('env') !== 'test') {
     // eslint-disable-next-line no-console
@@ -90,3 +76,15 @@ app.listen(port, () => {
 });
 
 module.exports = app;
+
+// var cors = require('cors')
+// app.use(cors());
+
+// // CSRF protection
+// app.use((req, res, next) => {
+//   if (/json/.test(req.get('Accept'))) {
+//     return next();
+//   }
+//
+//   res.sendStatus(406);
+// });

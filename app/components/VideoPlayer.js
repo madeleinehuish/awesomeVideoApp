@@ -7,7 +7,7 @@ const VideoPlayer = (props) => {
       <div>
         <ReactPlayer
           id="videoPlayer"
-          // controls
+          controls
           // autoplay
           // width='400'
           // height='400'

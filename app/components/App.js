@@ -18,11 +18,21 @@ class App extends Component {
 	}
 
   componentDidMount() {
-	axios.get('/api-getVideoFromFile')
+	// axios.get('/api-getVideoFromFile')
+	axios.get('/api-getVideoFromAWS')
     .then(res => {
       console.log(res);
-      // this.setState({ videoCurrent: res.data})
+      this.setState({ videoCurrent: res.data})
     })
+		.then(res => {
+			axios.get('/api-videoFrame-test')
+				.then(res => {
+					console.log(res)
+				})
+				.catch((error) => {
+		    console.log(error);
+		    });
+		})
     .catch((error) => {
     console.log(error);
     });

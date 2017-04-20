@@ -8,7 +8,7 @@ exports.seed = function(knex) {
       return knex('videos').insert([{
         id: 1,
         name: 'Video Test 1',
-        filereference: `/Users/maddiehuish/Projects/videoApp/serverAPI/Videos/video1.mp4`,
+        filereference: `https://s3-us-west-2.amazonaws.com/madeleinehuish-videoapp/Videos/video1.mp4`,
       }]);
     });
 };
