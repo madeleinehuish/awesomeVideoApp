@@ -1,7 +1,5 @@
 # Awesome Video App
 
-Madeleine Huish and Carolyn Kunz
-
 A lightning project in React.js and Node.js to explore video image processing.
 
 <!-- ## Dependencies
