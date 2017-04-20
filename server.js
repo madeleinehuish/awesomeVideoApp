@@ -15,12 +15,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 
-
-const apiTest = require('./serverAPI/api-video-test');
-const apiGetVideo = require('./serverAPI/api-getVideoFromFile');
-const apiVideoFrameTest = require('./serverAPI/api-videoFrame-test');
-
-
 app.disable('x-powered-by');
 app.use(express.static('public'));
 
@@ -38,12 +32,19 @@ switch (app.get('env')) {
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-
 app.use(express.static(path.join('public')));
 
-app.use('/api-video-test', apiTest );
-app.use('/api-getVideoFromFile', apiGetVideo);
+
+console.log('in server, before app.use');
+const apiGetVideoFromFile = require('./serverAPI/api-getVideoFromFile');
+const apiVideoFrameTest = require('./serverAPI/api-videoFrame-test');
+const apiTest = require('./serverAPI/api-video-test');
+app.use(apiGetVideoFromFile);
 app.use(apiVideoFrameTest);
+app.use(apiTest);
+
+// app.use(apiVideoFrameTest);
+console.log('in server, after app.use');
 
 app.use('/assets', express.static('app/assets'));
 

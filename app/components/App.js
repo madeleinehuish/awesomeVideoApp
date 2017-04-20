@@ -4,8 +4,6 @@ import axios from 'axios';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-// import VideoTest from './VideoTest';
-
 
 class App extends Component {
 	constructor(props) {
@@ -20,11 +18,14 @@ class App extends Component {
 	}
 
   componentDidMount() {
-	axios.get(`/api-getVideoFromFile/${0}`)
+	axios.get('/api-getVideoFromFile')
     .then(res => {
-      console.log(res.data);
-      this.setState({ videoCurrent: res.data})
+      console.log(res);
+      // this.setState({ videoCurrent: res.data})
     })
+    .catch((error) => {
+    console.log(error);
+    });
   }
 
 	onInputChange(event) {
